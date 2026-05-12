@@ -6,7 +6,7 @@ hero:
   text: "Bootcamp"
   tagline: "Publish APIs for developer self-service. Enterprise SSO with OIDC. Role-based access control. All on Konnect."
   image:
-    src: /kong-konnect-logo.svg
+    src: /kong-logomark-lime.svg
     alt: Kong Developer Portal
   actions:
     - theme: brand
