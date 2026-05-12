@@ -8,7 +8,7 @@ export default defineConfig({
   outDir: '../dist',
   cacheDir: '../.vitepress-cache',
 
-  base: '/learn-dev-portal/',
+  base: '/learn-kong-dev-portal/',
 
   appearance: 'force-dark',
   cleanUrls: true,
@@ -29,13 +29,13 @@ export default defineConfig({
   ],
 
   head: [
-    ['link', { rel: 'icon',           href: '/learn-dev-portal/favicon.png', type: 'image/png', sizes: '32x32' }],
-    ['link', { rel: 'shortcut icon',  href: '/learn-dev-portal/favicon.png', type: 'image/png' }],
-    ['link', { rel: 'apple-touch-icon', href: '/learn-dev-portal/favicon.png' }],
+    ['link', { rel: 'icon',           href: '/learn-kong-dev-portal/favicon.png', type: 'image/png', sizes: '32x32' }],
+    ['link', { rel: 'shortcut icon',  href: '/learn-kong-dev-portal/favicon.png', type: 'image/png' }],
+    ['link', { rel: 'apple-touch-icon', href: '/learn-kong-dev-portal/favicon.png' }],
     ['meta', { name: 'theme-color', content: '#000F06' }],
     ['meta', { property: 'og:title', content: 'Kong Developer Portal Bootcamp' }],
     ['meta', { property: 'og:description', content: 'Hands-on labs: publish APIs to Developer Portal, OIDC SSO, RBAC teams' }],
-    ['meta', { property: 'og:image', content: '/learn-dev-portal/kong-konnect-logo.svg' }],
+    ['meta', { property: 'og:image', content: '/learn-kong-dev-portal/kong-konnect-logo.svg' }],
   ],
 
   markdown: {
