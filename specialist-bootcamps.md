@@ -30,19 +30,19 @@ features:
 
   - icon: 🔄
     title: "APIOps Bootcamp ↗"
-    details: "GitOps with decK — Git as source of truth. GitHub Actions CI/CD: validate on PR, diff preview, sync to Konnect on merge."
+    details: "GitOps with decK - Git as source of truth. GitHub Actions CI/CD: validate on PR, diff preview, sync to Konnect on merge."
     link: https://kong-grajesh-se.github.io/learn-kong-apiops-bootcamp/
     linkText: Go to APIOps →
 
   - icon: 🎮
     title: "Insomnia Bootcamp ↗"
-    details: "Master API testing with Insomnia — design, debug, and test REST, GraphQL, and gRPC APIs."
+    details: "Master API testing with Insomnia - design, debug, and test REST, GraphQL, and gRPC APIs."
     link: https://kong-grajesh-se.github.io/learn-insomnia/
     linkText: Go to Insomnia →
 
   - icon: 🤝
     title: "Bring Your Own Agent Bootcamp ↗"
-    details: "9 modules · 2 days · LLM · MCP · A2A · OAuth 2.1 · OPA. Govern every AI agent at enterprise scale — without changing a line of agent code."
+    details: "9 modules · 2 days · LLM · MCP · A2A · OAuth 2.1 · OPA. Govern every AI agent at enterprise scale - without changing a line of agent code."
     link: https://kong-grajesh-se.github.io/bring-your-own-agent/
     linkText: Go to BYOA →
 ---

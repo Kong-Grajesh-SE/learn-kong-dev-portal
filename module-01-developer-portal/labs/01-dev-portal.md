@@ -1,6 +1,8 @@
-# Lab 09-B - Developer Portal
+# Lab 01-B - Developer Portal
 
 > **Goal:** Publish the mytravel.com API to Kong's Developer Portal. Configure teams, upload an OpenAPI spec, and enable developer self-service app registration.
+>
+> Every step has a **✅ Checkpoint** - if the expected output doesn't match, stop and fix before continuing.
 
 ## Prerequisites
 
@@ -18,7 +20,17 @@ export KONNECT_PAT="kpat_..."
 kongctl login
 ```
 
-## Step 1 - Adopt or create a portal
+## Before you start
+
+```bash
+# Confirm kongctl is available
+kongctl version
+
+# Confirm Konnect login
+kongctl whoami
+```
+
+## Step 1 - Adopt or create a portal (~10 min)
 
 ```bash
 # List existing portals
@@ -34,7 +46,9 @@ kongctl create portal \
 kongctl adopt portal "mytravel-developer-portal" --namespace default
 ```
 
-## Step 2 - Create the API product
+**✅ Checkpoint.** `kongctl list portals` shows `mytravel-developer-portal`.
+
+## Step 2 - Create the API product (~10 min)
 
 ```bash
 # Create API product
@@ -50,7 +64,9 @@ kongctl create api-version \
   --display-name "Version 1.0"
 ```
 
-## Step 3 - Upload OpenAPI spec
+**✅ Checkpoint.** `kongctl list apis` shows `mytravel-api` with version `v1`.
+
+## Step 3 - Upload OpenAPI spec (~10 min)
 
 First, create the spec file `mytravel-openapi.yaml`:
 
@@ -206,7 +222,9 @@ kongctl create api-spec \
   --spec ./mytravel-openapi.yaml
 ```
 
-## Step 4 - Link Gateway Service
+**✅ Checkpoint.** OpenAPI spec uploaded - `kongctl get api-spec --api mytravel-api --version v1` returns the spec.
+
+## Step 4 - Link Gateway Service (~5 min)
 
 ```bash
 # Link the Konnect Control Plane service to this API product
@@ -217,7 +235,9 @@ kongctl create api-link \
   --service "mytravel-com-api"
 ```
 
-## Step 5 - Publish to portal
+**✅ Checkpoint.** `kongctl get api-link --api mytravel-api --version v1` shows the linked service.
+
+## Step 5 - Publish to portal (~5 min)
 
 ```bash
 # Publish the API to the portal
@@ -227,7 +247,9 @@ kongctl publish api \
   --auto-approve-registration true
 ```
 
-## Step 6 - Configure Teams & Roles
+**✅ Checkpoint.** API is published - visible in the portal UI.
+
+## Step 6 - Configure Teams & Roles (~10 min)
 
 ```bash
 # Create a team
@@ -242,7 +264,9 @@ kongctl assign role \
   --role "Viewer"
 ```
 
-## Step 7 - Customise portal appearance
+**✅ Checkpoint.** `kongctl list teams` shows `API Consumers` team with `Viewer` role.
+
+## Step 7 - Customise portal appearance (~10 min)
 
 ```bash
 # Upload portal logo
@@ -281,4 +305,8 @@ Once published, external developers can:
 
 ---
 
-*Next: [Lab 09-C - decK & CI/CD →](./09-deck-cicd)*
+**✅ Checkpoint.** Portal appearance updated - logo and colors match your branding.
+
+---
+
+*Next: [Lab 01-C - RBAC & Teams →](./01-rbac-teams)*

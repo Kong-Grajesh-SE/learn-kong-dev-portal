@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'Kong Developer Portal Bootcamp',
-  description: 'Kong Partner Enablement — Developer Portal: publish APIs, configure OIDC SSO, and manage teams with RBAC on Konnect.',
+  description: 'Kong Partner Enablement - Developer Portal: publish APIs, configure OIDC SSO, and manage teams with RBAC on Konnect.',
 
   srcDir: '..',
   outDir: '../dist',
@@ -50,12 +50,18 @@ export default defineConfig({
     nav: [
       { text: '🏠 Home', link: '/' },
       {
-        text: '📚 Module',
+        text: '� Getting Started',
+        items: [
+          { text: '✅ Prerequisites', link: '/prerequisites' },
+        ],
+      },
+      {
+        text: '📚 Modules',
         items: [
           { text: '📋 Overview',            link: '/module-01-developer-portal/' },
-          { text: '🌐 Developer Portal',    link: '/module-01-developer-portal/labs/09-dev-portal' },
-          { text: '🔐 OIDC Auth Code Flow', link: '/module-01-developer-portal/labs/09-oidc-auth-code' },
-          { text: '👥 RBAC & Teams',        link: '/module-01-developer-portal/labs/09-rbac-teams' },
+          { text: '🌐 Developer Portal',    link: '/module-01-developer-portal/labs/01-dev-portal' },
+          { text: '🔐 OIDC Auth Code Flow', link: '/module-01-developer-portal/labs/01-oidc-auth-code' },
+          { text: '👥 RBAC & Teams',        link: '/module-01-developer-portal/labs/01-rbac-teams' },
         ],
       },
       {
@@ -67,6 +73,7 @@ export default defineConfig({
           { text: '🔄 APIOps with decK',      link: 'https://kong-grajesh-se.github.io/learn-kong-apiops-bootcamp/', target: '_blank' },
           { text: '🎮 Insomnia Bootcamp',     link: 'https://kong-grajesh-se.github.io/learn-insomnia/', target: '_blank' },
           { text: '🤝 Bring Your Own Agent',  link: 'https://kong-grajesh-se.github.io/bring-your-own-agent/', target: '_blank' },
+          { text: '🌋 Volcano SDK Bootcamp', link: 'https://kong-grajesh-se.github.io/learn-volcano-sdk/', target: '_blank' },
         ],
       },
       {
@@ -81,13 +88,20 @@ export default defineConfig({
 
     sidebar: [
       {
+        text: '🚀 Getting Started',
+        collapsed: false,
+        items: [
+          { text: '📋 Prerequisites', link: '/prerequisites' },
+        ],
+      },
+      {
         text: '🌐 Developer Portal',
         collapsed: false,
         items: [
           { text: '📋 Overview',              link: '/module-01-developer-portal/' },
-          { text: '🌐 Lab: Developer Portal', link: '/module-01-developer-portal/labs/09-dev-portal' },
-          { text: '🔐 Lab: OIDC Auth Code',   link: '/module-01-developer-portal/labs/09-oidc-auth-code' },
-          { text: '👥 Lab: RBAC & Teams',     link: '/module-01-developer-portal/labs/09-rbac-teams' },
+          { text: '🌐 Lab: Developer Portal', link: '/module-01-developer-portal/labs/01-dev-portal' },
+          { text: '🔐 Lab: OIDC Auth Code',   link: '/module-01-developer-portal/labs/01-oidc-auth-code' },
+          { text: '👥 Lab: RBAC & Teams',     link: '/module-01-developer-portal/labs/01-rbac-teams' },
         ],
       },
       {
@@ -119,8 +133,8 @@ export default defineConfig({
     ],
 
     footer: {
-      message: 'Kong Developer Portal Bootcamp — Partner Enablement',
-      copyright: '© Kong Inc. 2026 — The AI Connectivity Company',
+      message: 'Kong Developer Portal Bootcamp - Partner Enablement',
+      copyright: '© Kong Inc. 2026 - The AI Connectivity Company',
     },
 
     search: { provider: 'local' },

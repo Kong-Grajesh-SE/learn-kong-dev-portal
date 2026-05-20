@@ -1,6 +1,8 @@
-# Lab 09-A - OIDC Authorization Code Flow
+# Lab 01-A - OIDC Authorization Code Flow
 
 > **Goal:** Implement the full OIDC Authorization Code flow end-to-end. Browser-based login via Keycloak, server-side token exchange, and session management.
+>
+> Every step has a **✅ Checkpoint** - if the expected output doesn't match, stop and fix before continuing.
 
 ## Flow Recap
 
@@ -18,7 +20,14 @@
 11. Express → Return user profile data
 ```
 
-## Step 1 - Prerequisites
+## Before you start
+
+```bash
+# Confirm Kong is running
+curl -s http://localhost:8001/status | jq '.server.connections_active'
+```
+
+## Step 1 - Prerequisites (~5 min)
 
 ```bash
 # Start Keycloak with the workshop realm
@@ -35,7 +44,9 @@ docker exec $KONG_ID wget -qO- \
   | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['issuer'])"
 ```
 
-## Step 2 - Apply OIDC plugin
+**✅ Checkpoint.** `docker exec $KONG_ID wget -qO- http://kong-workshop-keycloak:8080/realms/workshop/.well-known/openid-configuration | python3 -c "import sys,json; print(json.load(sys.stdin)['issuer'])"` returns the Keycloak issuer URL.
+
+## Step 2 - Apply OIDC plugin (~5 min)
 
 ```bash
 curl -s -X POST http://localhost:8001/routes/users-profile/plugins \
@@ -65,7 +76,9 @@ curl -s -X POST http://localhost:8001/routes/users-profile/plugins \
   }' | jq '{id, name}'
 ```
 
-## Step 3 - Test the browser flow
+**✅ Checkpoint.** `curl -s http://localhost:8001/routes/users-profile/plugins | jq '.[].name'` returns `"openid-connect"`.
+
+## Step 3 - Test the browser flow (~10 min)
 
 ```bash
 # Without session → should redirect to Keycloak
@@ -78,7 +91,9 @@ In a browser:
 3. After login → redirected back to profile endpoint
 4. Profile data returned with user's info
 
-## Step 4 - Inspect the session cookie
+**✅ Checkpoint.** Browser shows the user's profile data after Keycloak login.
+
+## Step 4 - Inspect the session cookie (~5 min)
 
 Open browser DevTools → Application → Cookies → `localhost`:
 
@@ -90,7 +105,9 @@ Secure:   production only
 SameSite: Lax
 ```
 
-## Step 5 - Decode the userinfo header
+**✅ Checkpoint.** Session cookie is visible in DevTools with `HttpOnly: ✅`.
+
+## Step 5 - Decode the userinfo header (~5 min)
 
 The `X-Userinfo` header contains a base64-encoded JSON claims object:
 
@@ -106,7 +123,9 @@ curl -s -H "Cookie: session=<your-cookie>" \
   base64 -d 2>/dev/null | python3 -m json.tool
 ```
 
-## Step 6 - Logout
+**✅ Checkpoint.** Decoded userinfo JSON contains `email`, `name`, and `preferred_username`.
+
+## Step 6 - Logout (~5 min)
 
 ```bash
 # Trigger logout (clears session + revokes token at Keycloak)
@@ -136,4 +155,8 @@ curl -si http://localhost:8000/logout | grep -E "HTTP|Location"
 
 ---
 
-*Next: [Lab 09-B - Developer Portal →](./09-dev-portal)*
+**✅ Checkpoint.** Logout response is `302` redirect to Keycloak RP-initiated logout.
+
+---
+
+*Next: [Lab 01-B - Developer Portal →](./01-dev-portal)*

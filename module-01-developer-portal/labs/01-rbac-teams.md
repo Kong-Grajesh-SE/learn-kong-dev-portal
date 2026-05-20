@@ -1,6 +1,8 @@
-# Lab 09-D - RBAC & Teams
+# Lab 01-C - RBAC & Teams
 
 > **Goal:** Configure Kong Manager RBAC with roles and workspaces. Create team-based isolation so different teams manage their own services without interfering.
+>
+> Every step has a **✅ Checkpoint** - if the expected output doesn't match, stop and fix before continuing.
 
 ## Kong RBAC Architecture
 
@@ -18,7 +20,7 @@ Each workspace has its own:
   └── Custom roles
 ```
 
-## Step 1 - Enable RBAC (Kong Enterprise)
+## Step 1 - Enable RBAC (Kong Enterprise) (~5 min)
 
 ::: warning
 RBAC requires Kong Gateway Enterprise. The `admin_gui_auth` configuration must be set before enabling RBAC.
@@ -38,7 +40,9 @@ docker run -e KONG_ENFORCE_RBAC=on \
            kong/kong-gateway:3.9
 ```
 
-## Step 2 - Create workspaces
+**✅ Checkpoint.** Kong restarts with RBAC enabled - `curl -s http://localhost:8001 | jq '.configuration.enforce_rbac'` returns `"on"`.
+
+## Step 2 - Create workspaces (~5 min)
 
 ```bash
 # Create workspaces (Enterprise)
@@ -49,7 +53,9 @@ for ws in team-flights team-ai team-partners; do
 done
 ```
 
-## Step 3 - Create RBAC roles
+**✅ Checkpoint.** Three workspaces created - `curl -s http://localhost:8001/workspaces | jq '.[].name'` lists `team-flights`, `team-ai`, `team-partners`.
+
+## Step 3 - Create RBAC roles (~10 min)
 
 ```bash
 # Create a read-only viewer role
@@ -85,7 +91,9 @@ for endpoint in services routes plugins consumers; do
 done
 ```
 
-## Step 4 - Create RBAC users
+**✅ Checkpoint.** `curl -s http://localhost:8001/rbac/roles | jq '.[].name'` lists `gateway-viewer` and `gateway-developer`.
+
+## Step 4 - Create RBAC users (~5 min)
 
 ```bash
 # Create admin user for flights team
@@ -109,7 +117,9 @@ curl -s -X POST http://localhost:8001/workspaces/team-flights/meta/rbac \
   -d '{"rbac_user": "flights-team-admin"}'
 ```
 
-## Step 5 - Workspace isolation in practice
+**✅ Checkpoint.** `curl -s http://localhost:8001/rbac/users | jq '.[].name'` lists `flights-team-admin`.
+
+## Step 5 - Workspace isolation in practice (~10 min)
 
 ```bash
 # Create a service in the flights workspace
@@ -124,7 +134,9 @@ curl -si http://localhost:8001/team-ai/services \
 # HTTP/1.1 403 Forbidden
 ```
 
-## Step 6 - Consumer groups for rate limiting tiers
+**✅ Checkpoint.** Flights admin can create services in `team-flights` but gets `403` accessing `team-ai`.
+
+## Step 6 - Consumer groups for rate limiting tiers (~10 min)
 
 ```yaml
 _format_version: '3.0'
@@ -188,6 +200,10 @@ plugins:
 
 ---
 
-*🎉 Congratulations! You've completed the Kong API Gateway Bootcamp.*
+**✅ Checkpoint.** Consumer groups exist. Rate limits differ per group.
 
-[← Back to Home](/)*
+---
+
+*🎉 Congratulations! You've completed the Kong Developer Portal Bootcamp.*
+
+*[← Back to Home](/)*
