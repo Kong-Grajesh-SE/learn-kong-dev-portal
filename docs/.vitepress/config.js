@@ -119,7 +119,7 @@ export default defineConfig({
     ],
 
     editLink: {
-      pattern: 'https://github.com/Kong-Grajesh-SE/learn-dev-portal/edit/main/:path',
+      pattern: 'https://github.com/Kong-Grajesh-SE/learn-kong-dev-portal/edit/main/:path',
       text: 'Edit this page on GitHub',
     },
 
@@ -129,7 +129,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/Kong-Grajesh-SE/learn-dev-portal' },
+      { icon: 'github', link: 'https://github.com/Kong-Grajesh-SE/learn-kong-dev-portal' },
     ],
 
     footer: {

@@ -24,5 +24,5 @@ features:
     title: "Module 01 - Developer Portal"
     details: "Publish APIs with OIDC SSO, configure Developer Portal with OpenAPI specs, and lock down Kong Manager with RBAC workspaces and team isolation."
     link: /module-01-developer-portal/
-    linkText: Start module →
+    linkText: Start module
 ---
