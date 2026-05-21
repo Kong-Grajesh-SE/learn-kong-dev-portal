@@ -41,7 +41,7 @@ Read these before starting the labs (~20 min total):
 | # | Topic | What you'll learn |
 |---|---|---|
 | [01: What is Developer Portal?](./01-what-is-dev-portal) | The product, its architecture, key objects (API Product, Version, Implementation, Publication, Auth Strategy), and where it fits in the API lifecycle |
-| [02: Teams and Roles](./02-teams-and-roles) | Two layers of access control — Konnect org teams (who manages the portal) vs portal developer teams (who sees which APIs) |
+| [02: Teams and Roles](./02-teams-and-roles) | Two layers of access control - Konnect org teams (who manages the portal) vs portal developer teams (who sees which APIs) |
 
 ---
 

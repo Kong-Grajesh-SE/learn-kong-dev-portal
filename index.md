@@ -27,7 +27,7 @@ features:
     linkText: Read now
   - icon: 👥
     title: "Pre-read: Teams and Roles"
-    details: "Two layers of access control — Konnect org teams (who manages the portal) vs portal developer teams (who sees which APIs). ~10 min."
+    details: "Two layers of access control - Konnect org teams (who manages the portal) vs portal developer teams (who sees which APIs). ~10 min."
     link: /module-01-developer-portal/02-teams-and-roles
     linkText: Read now
   - icon: 🌐

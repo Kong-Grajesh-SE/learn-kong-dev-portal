@@ -34,7 +34,7 @@ Konnect Organization
 
 ---
 
-## Layer 1 — Konnect Organization Teams
+## Layer 1 - Konnect Organization Teams
 
 These control which members of **your internal team** can do what in the Konnect platform.
 
@@ -55,7 +55,7 @@ You can create **custom teams** and assign specific roles. Here are the Dev Port
 
 | Role | What it grants |
 |---|---|
-| **Admin** | Full access — manage developers, applications, teams, publish APIs, grant access, delete the portal |
+| **Admin** | Full access - manage developers, applications, teams, publish APIs, grant access, delete the portal |
 | **Creator** | Create new Dev Portals |
 | **Maintainer** | Edit/delete applications, view developers, publish APIs, grant access (cannot delete the portal) |
 | **Viewer** | Read-only access to developers and applications |
@@ -140,12 +140,12 @@ Most roles can be scoped to a **specific resource**. For example:
 - API Owner for only the Flights API
 - Auth Strategy Viewer for only the key-auth strategy
 
-This enables **least-privilege access** — each team member gets exactly the permissions they need, nothing more.
+This enables **least-privilege access** - each team member gets exactly the permissions they need, nothing more.
 :::
 
 ---
 
-## Layer 2 — Portal Developer Teams
+## Layer 2 - Portal Developer Teams
 
 These control which **external developers** (your API consumers) can see and register for specific APIs. This is the RBAC system within the portal itself.
 
@@ -161,7 +161,7 @@ These control which **external developers** (your API consumers) can see and reg
 1. **Enable RBAC** on the portal (Settings → Security → Role-based access control)
 2. **Create developer teams** (e.g., `travel-partners`, `public-developers`)
 3. **Assign API roles** to each team (which APIs they can access, Consumer vs Viewer)
-4. **Add developers** to teams — manually, or automatically via IdP group mapping
+4. **Add developers** to teams - manually, or automatically via IdP group mapping
 
 ```
 Dev Portal
@@ -268,4 +268,4 @@ Configure this in **Dev Portal → Settings → Team Mappings**.
 
 ---
 
-*Next: Start [Lab 01 — Portal Setup & API Publishing →](./labs/01-portal-setup)*
+*Next: Start [Lab 01 - Portal Setup & API Publishing →](./labs/01-portal-setup)*
