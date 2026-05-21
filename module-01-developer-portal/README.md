@@ -34,6 +34,98 @@ curl -s -H "Authorization: Bearer $KONNECT_PAT" \
 | **Auth Strategy** | How developer applications prove their identity (key-auth or OIDC) | Controls credential issuance - developers get API keys or OAuth tokens through the portal |
 | **Portal Teams** | Groups of developers with shared visibility and access rules | Partners see private APIs, public developers don't - without managing individual permissions |
 
+## Pre-read: Dev Portal Teams and Roles
+
+Before jumping into the labs, understand the **two layers** of team-based access control in Konnect:
+
+### Layer 1 — Konnect Organization Teams (who manages the portal)
+
+These teams control which **Konnect users** (your internal team) can administer the portal, publish APIs, and approve registrations. Assign them under **Organization → Teams** in Konnect.
+
+#### Predefined teams
+
+| Team | What members can do |
+|---|---|
+| **Organization Admin** | Full access to all Konnect resources including Dev Portal |
+| **Portal Admin** | Full management of Dev Portal content, configuration, developer/application approvals, and service connections |
+| **API Product Admin** | Create and manage API products, publish versions to Dev Portal, enable app registration |
+
+#### Predefined Dev Portal roles
+
+You can also create **custom teams** and assign granular roles. The Dev Portal roles are:
+
+| Role | Permissions |
+|---|---|
+| **Admin** | Full write access — manage developers, applications, teams, publish APIs, grant access, delete portal |
+| **Creator** | Create new Dev Portals |
+| **Maintainer** | Edit/delete applications, view developers, publish APIs, grant access (cannot delete portal) |
+| **Viewer** | Read-only access to developers and applications |
+| **Content Editor** | Edit portal pages, snippets, and customization |
+| **Product Publisher** | Publish API products to the portal |
+| **API Registration Approver** | Approve developer application registration requests |
+
+#### Custom teams for common personas
+
+Kong recommends these custom team configurations for typical organizations:
+
+| Custom Team | Purpose | Key Roles |
+|---|---|---|
+| **API Platform Owner** | Full access to APIs, portals, and applications | Portal Creator, Portal Admin, API Creator, API Admin, API Publisher |
+| **Portal Owner** | Configure a specific portal, manage applications | Portal Admin (scoped), Auth Strategy Viewer, API Publisher |
+| **API Owner** | Define, publish, and approve registrations for specific APIs | API Admin, API Publisher, API Approver, Portal Viewer |
+| **API Security Owner** | Manage auth strategies (key-auth, OIDC, DCR) | Auth Strategy Creator, Auth Strategy Maintainer, DCR Provider Creator |
+| **Portal Content Editor** | Manage portal pages and snippets | Portal Content Editor (scoped) |
+
+::: tip Role scoping
+Most roles can be scoped to a specific resource. For example, you can make someone a Portal Admin for only the staging portal, or an API Owner for only the Flights API. This enables **least-privilege access** across teams.
+:::
+
+### Layer 2 — Dev Portal Developer Teams (who sees which APIs)
+
+These teams control which **external developers** (your API consumers) can see and register for specific APIs on the portal. Manage them under **Dev Portal → Access and Approvals → Teams**.
+
+| Developer Role | What it grants |
+|---|---|
+| **API Consumer** | Developer can make API calls to the selected APIs |
+| **API Viewer** | Read-only access to the API documentation (no registration) |
+
+**How it works:**
+
+1. Enable **RBAC** on the portal (Settings → Security)
+2. Create developer teams (e.g., `travel-partners`, `public-developers`)
+3. Assign API roles to each team (which APIs, Consumer vs Viewer)
+4. Add developers to teams — manually, or automatically via IdP group mapping
+
+```
+Konnect Organization
+├── Org Teams (internal staff)           ← Layer 1
+│   ├── Portal Admin team
+│   ├── API Owner team
+│   └── Content Editor team
+│
+└── Dev Portal
+    └── Developer Teams (API consumers)  ← Layer 2
+        ├── travel-partners → Cars API (Consumer), Hotels API (Consumer)
+        └── public-developers → Flights API (Consumer)
+```
+
+::: info Two different kinds of "teams"
+**Konnect org teams** = your internal staff who *manage* the portal (Layer 1).
+**Dev Portal developer teams** = external developers who *use* the portal (Layer 2).
+Don't confuse them — they live in different parts of the Konnect UI.
+:::
+
+### When to use which
+
+| Scenario | Layer | Action |
+|---|---|---|
+| "Alice should be able to publish APIs to the portal" | Layer 1 | Add Alice to a Konnect team with API Publisher role |
+| "Bob (external dev) should see the Cars API" | Layer 2 | Add Bob to a portal developer team with Consumer role on Cars API |
+| "Only the security team can manage auth strategies" | Layer 1 | Create a custom team with Auth Strategy Maintainer role |
+| "Partners see private APIs, public devs don't" | Layer 2 | Set API visibility to private, grant access via developer team |
+
+---
+
 ## Labs
 
 | Lab | Topic | Time |
