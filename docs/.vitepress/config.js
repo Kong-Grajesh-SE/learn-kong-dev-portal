@@ -59,6 +59,8 @@ export default defineConfig({
         text: '📚 Modules',
         items: [
           { text: '📋 Overview',                      link: '/module-01-developer-portal/' },
+          { text: '📖 What is Dev Portal?',            link: '/module-01-developer-portal/01-what-is-dev-portal' },
+          { text: '👥 Teams and Roles',                link: '/module-01-developer-portal/02-teams-and-roles' },
           { text: '🌐 Lab 01: Portal Setup',          link: '/module-01-developer-portal/labs/01-portal-setup' },
           { text: '🔑 Lab 02: App Registration',      link: '/module-01-developer-portal/labs/02-app-registration' },
           { text: '🎨 Lab 03: Customization & Teams', link: '/module-01-developer-portal/labs/03-portal-customization' },
@@ -85,7 +87,15 @@ export default defineConfig({
         ],
       },
       {
-        text: '🌐 Developer Portal',
+        text: '📖 Pre-reads',
+        collapsed: false,
+        items: [
+          { text: '📖 What is Dev Portal?',  link: '/module-01-developer-portal/01-what-is-dev-portal' },
+          { text: '👥 Teams and Roles',        link: '/module-01-developer-portal/02-teams-and-roles' },
+        ],
+      },
+      {
+        text: '🌐 Developer Portal Labs',
         collapsed: false,
         items: [
           { text: '📋 Overview',                      link: '/module-01-developer-portal/' },

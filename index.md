@@ -20,6 +20,16 @@ hero:
       link: https://cloud.konghq.com
 
 features:
+  - icon: 📖
+    title: "Pre-read: What is Dev Portal?"
+    details: "Understand the product, its architecture, key objects (API Product, Version, Implementation, Publication), and where it fits in the API lifecycle. ~10 min."
+    link: /module-01-developer-portal/01-what-is-dev-portal
+    linkText: Read now
+  - icon: 👥
+    title: "Pre-read: Teams and Roles"
+    details: "Two layers of access control — Konnect org teams (who manages the portal) vs portal developer teams (who sees which APIs). ~10 min."
+    link: /module-01-developer-portal/02-teams-and-roles
+    linkText: Read now
   - icon: 🌐
     title: "Lab 01 - Portal Setup & API Publishing"
     details: "Create a Developer Portal, publish API products with OpenAPI specs, link to gateway services, and browse the live portal. ~70 min."
