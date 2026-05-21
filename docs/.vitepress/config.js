@@ -50,7 +50,7 @@ export default defineConfig({
     nav: [
       { text: '🏠 Home', link: '/' },
       {
-        text: '� Getting Started',
+        text: '🚀 Getting Started',
         items: [
           { text: '✅ Prerequisites', link: '/prerequisites' },
         ],
