@@ -1,72 +1,63 @@
 ---
 outline: deep
-description: Everything you need installed before starting the Kong Developer Portal Bootcamp.
+description: Everything you need before starting the Kong Developer Portal Bootcamp.
 ---
 
 # Prerequisites
 
-::: warning Kong Gateway Enterprise 3.14+ required
-Developer Portal, OIDC, and RBAC are Enterprise features. Labs target Kong Gateway 3.14 on Konnect. Konnect free tier includes Developer Portal.
+::: tip Continues from earlier bootcamps
+This bootcamp assumes you've completed the API Gateway and APIOps bootcamps and have gateway services running on a Konnect control plane.
 :::
 
 ## Required tools
 
-| Tool | Purpose | Min Version | Install |
-|---|---|---|---|
-| **kongctl** | Konnect CLI for portal, API, and team management | Latest | `brew install kong/kongctl/kongctl` |
-| **Konnect account** | Cloud control plane | - | [cloud.konghq.com](https://cloud.konghq.com) |
-| **Konnect PAT** | Personal Access Token for API calls | - | Account → Tokens |
-| **Kong Gateway** | The gateway itself | **3.14+** | Konnect or `kong/kong-gateway:3.14` |
-| **Keycloak** | OIDC identity provider (for SSO labs) | 24+ | Docker (see below) |
-| **curl** | HTTP client | Any | Pre-installed on macOS/Linux |
-| **jq** | Parse JSON responses | 1.6+ | `brew install jq` |
-| **Node.js** | Run the docs site locally | 20 LTS | `brew install node@20` |
+| Tool | Purpose | Install |
+|---|---|---|
+| **Konnect account** | Cloud control plane with Dev Portal | [cloud.konghq.com](https://cloud.konghq.com) (free tier) |
+| **Konnect PAT** | Personal Access Token for REST API calls | Account → Tokens |
+| **curl** | HTTP client for Konnect REST API | Pre-installed on macOS/Linux |
+| **jq** | Parse JSON responses | `brew install jq` |
+| **Node.js** | Run the docs site locally | `brew install node@20` |
+
+## Prior bootcamp services
+
+Your Konnect control plane should have these services from the API Gateway bootcamp:
+
+| Service | Route | Purpose |
+|---|---|---|
+| `flights-svc` | `/api/flights` | Flight search and booking |
+| `hotels-svc` | `/api/hotels` | Hotel search |
+| `cars-svc` | `/api/cars` | Car rental search |
+
+If you don't have these services, complete the [API Gateway Bootcamp](https://kong-grajesh-se.github.io/learn-kong-gateway/) first, or create placeholder services in your control plane.
 
 ## Verify your setup
 
 ```bash
-# kongctl
-kongctl version
-
-# Konnect login
+# Set environment variables
 export KONNECT_PAT="kpat_your_token_here"
-kongctl login
-kongctl whoami
+export KONNECT_API="https://us.api.konghq.com"
 
-# Kong Gateway
-curl -s http://localhost:8001/status | jq '.server.connections_active'
+# Verify Konnect access
+curl -s -H "Authorization: Bearer $KONNECT_PAT" \
+  "$KONNECT_API/v2/me" | jq '{name: .full_name, org: .active_org.name}'
 
-# jq
+# Verify jq
 jq --version
+
+# Verify control plane has services
+CP_ID=$(curl -s -H "Authorization: Bearer $KONNECT_PAT" \
+  "$KONNECT_API/v2/control-planes" | jq -r '.data[0].id')
+curl -s -H "Authorization: Bearer $KONNECT_PAT" \
+  "$KONNECT_API/v2/control-planes/$CP_ID/core-entities/services" | \
+  jq '.data[] | {name, host}'
 ```
 
-## Konnect setup
+You should see your gateway services listed. If the Konnect API returns `401`, your PAT may be expired - generate a new one.
 
-1. Sign up at [cloud.konghq.com](https://cloud.konghq.com) (free tier works)
-2. Create a Personal Access Token (PAT): **Account** → **Tokens** → **Generate Token**
-3. Export the token:
-
-```bash
-export KONNECT_PAT="kpat_your_token_here"
-kongctl login
-```
-
-## Keycloak setup (for OIDC labs)
-
-The OIDC lab requires Keycloak running locally:
-
-```bash
-# Start Keycloak with the workshop realm
-docker run -d --name keycloak \
-  -p 8080:8080 \
-  -e KC_BOOTSTRAP_ADMIN_USERNAME=admin \
-  -e KC_BOOTSTRAP_ADMIN_PASSWORD=admin \
-  quay.io/keycloak/keycloak:24.0 start-dev
-
-# Verify Keycloak is running
-curl -s http://localhost:8080/realms/master | jq '.realm'
-# "master"
-```
+::: info US vs EU region
+These labs use `us.api.konghq.com`. If your Konnect org is in the EU region, replace with `eu.api.konghq.com`.
+:::
 
 ---
 

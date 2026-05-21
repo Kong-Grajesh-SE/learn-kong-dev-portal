@@ -1,66 +1,72 @@
 # Module 01 - Developer Portal
 
-> **The scenario.** Your mytravel.com APIs are live behind Kong Gateway. Internal teams can hit the Admin API, but external partners and third-party developers have no way to discover, subscribe to, or test your APIs. You need a self-service portal - with real identity, team isolation, and role-based access.
+> **The scenario.** Your mytravel.com APIs are live behind Kong Gateway. You've built services, applied plugins, and managed config declaratively with decK. But external partners and third-party developers have no way to discover, subscribe to, or test your APIs. You need a **self-service developer portal**.
 >
-> In the next ~2.5 hours you'll publish APIs to Kong's Developer Portal, secure them with OIDC Authorization Code Flow via Keycloak, and lock down Kong Manager with RBAC so each team manages only their own services.
+> In the next ~3 hours you'll create a Developer Portal on Konnect, publish your APIs with OpenAPI specs, configure authentication strategies for app registration, and customise the portal with pages, teams, and branding.
 
 ## What you'll have at the end
 
-- A published Developer Portal with OpenAPI specs, app registration, and team-based visibility
-- OIDC Authorization Code Flow with Keycloak for browser-based SSO
-- Kong Manager RBAC with workspaces, roles, and consumer group tiers
-- A complete enterprise identity and governance layer on top of your gateway
+- A live Developer Portal on Konnect with your travel APIs published
+- Interactive OpenAPI documentation with "Try It" functionality
+- Key-auth authentication strategy with developer self-service registration
+- Portal pages (Getting Started guide, Terms of Service, Changelog)
+- Team-based access control with public and private API visibility
+- SSO identity provider configuration (OIDC/SAML)
 
 ## Who this module is for
 
-You have Kong Gateway 3.14+ running (Konnect or self-hosted Enterprise). You have `kongctl` installed and a Konnect PAT configured.
+You've completed the earlier bootcamps (API Gateway, AI Gateway, Agentic, APIOps) and have services running on a Konnect control plane. You have a Konnect account and a Personal Access Token (PAT).
 
 ```bash
-# Confirm kongctl is available
-kongctl version
-```
+# Verify Konnect access
+export KONNECT_PAT="kpat_..."
+export KONNECT_API="https://us.api.konghq.com"
 
-::: warning Requires Kong Gateway Enterprise
-Developer Portal, OIDC, and RBAC are Enterprise features. Konnect free tier includes Developer Portal.
-:::
+curl -s -H "Authorization: Bearer $KONNECT_PAT" \
+  "$KONNECT_API/v2/me" | jq '{name: .full_name, org: .active_org.name}'
+```
 
 ## Three concepts you need today
 
 | Concept | What it is | Why it matters |
 |---|---|---|
-| **Developer Portal** | A managed API catalog where external developers discover, subscribe to, and test your APIs | Eliminates the "email the platform team" bottleneck - developers self-serve |
-| **OIDC Auth Code Flow** | Browser-based SSO: redirect to IdP → login → auth code → token exchange → session cookie | Real identity on every request - no shared API keys for human users |
-| **RBAC Workspaces** | Kong Manager isolation boundaries - each team sees only their own services, routes, plugins | Prevents the "flights team accidentally deletes the AI team's routes" problem |
+| **API Product** | A catalog entry in Konnect with versions, specs, and implementations | The bridge between your running gateway service and what developers see in the portal |
+| **Auth Strategy** | How developer applications prove their identity (key-auth or OIDC) | Controls credential issuance - developers get API keys or OAuth tokens through the portal |
+| **Portal Teams** | Groups of developers with shared visibility and access rules | Partners see private APIs, public developers don't - without managing individual permissions |
 
 ## Labs
 
 | Lab | Topic | Time |
 |---|---|---|
-| [01-A: OIDC Auth Code Flow](/module-01-developer-portal/labs/01-oidc-auth-code) | Full browser-based SSO with Keycloak | ~45 min |
-| [01-B: Developer Portal](/module-01-developer-portal/labs/01-dev-portal) | Publish APIs, manage teams, customise portal | ~60 min |
-| [01-C: RBAC & Teams](/module-01-developer-portal/labs/01-rbac-teams) | Kong Manager RBAC, consumer groups, team isolation | ~45 min |
+| [01: Portal Setup & API Publishing](./labs/01-portal-setup) | Create portal, API products, versions with OpenAPI specs, implementations, publications | ~70 min |
+| [02: App Registration & Auth Strategies](./labs/02-app-registration) | Key-auth strategy, developer self-service, walk through the developer experience | ~60 min |
+| [03: Portal Customization & Teams](./labs/03-portal-customization) | Theme, pages, snippets, API documents, visibility, teams, RBAC, SSO | ~65 min |
 
 ## Exit ticket
 
-1. What is the difference between `authorization_code` and `session` in the OIDC plugin's `auth_methods`?
-2. Why does the Developer Portal require an API Product → Version → Spec chain instead of directly attaching a spec to a service?
-3. A new team joins the organization. What three Kong objects do you create to give them isolated access?
+1. What is the relationship chain from API Product → Version → Implementation → Publication?
+2. Why does Konnect separate "API Products" from "Gateway Services" instead of publishing services directly?
+3. A partner should see an API that public developers cannot. What two objects do you configure?
+4. What is the difference between `auto_approve_developers` and `auto_approve_applications`?
 
 ## Common pitfalls
 
 | Symptom | Likely cause |
 |---|---|
-| OIDC redirect loop after Keycloak login | `redirect_uri` in Kong plugin doesn't match URI registered in Keycloak client - must be exact |
-| `403` when accessing another workspace | RBAC working correctly - user has no role in that workspace |
-| Portal shows "No APIs available" | API product not published to the portal, or no spec uploaded |
-| Session cookie not set after login | `session_secret` is missing or too short (needs 32+ chars) |
-| `kongctl` commands fail with 401 | PAT expired or not exported - re-export `KONNECT_PAT` |
+| API doesn't appear on portal | Missing **publication** - the API product exists but isn't published to the portal |
+| "Try It" returns errors | Missing **implementation** - the API isn't linked to a gateway service |
+| Developer can't get credentials | No **auth strategy** attached to the publication |
+| Private API visible to everyone | RBAC not enabled on the portal, or visibility set to `public` |
+| `401` from Konnect API | PAT expired or wrong geo URL - check `us.api.konghq.com` vs `eu.api.konghq.com` |
+| Spec not rendering | Invalid OpenAPI - validate with `deck file validate` from the APIOps bootcamp |
 
 ## Resources
 
-- [Kong Konnect](https://cloud.konghq.com/)
-- [Developer Portal docs](https://developer.konghq.com/dev-portal/)
-- [Kong RBAC](https://developer.konghq.com/gateway/kong-manager/rbac/)
+- [Konnect Dev Portal docs](https://developer.konghq.com/dev-portal/)
+- [Konnect API reference](https://developer.konghq.com/api/konnect/portal-management/v3/)
+- [Dev Portal breaking changes (v3)](https://developer.konghq.com/dev-portal/breaking-changes/)
+- [Auth strategies](https://developer.konghq.com/dev-portal/auth-strategies/)
+- [Developer RBAC](https://developer.konghq.com/dev-portal/developer-rbac/)
 
 ---
 

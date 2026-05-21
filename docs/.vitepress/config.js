@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'Kong Developer Portal Bootcamp',
-  description: 'Kong Partner Enablement - Developer Portal: publish APIs, configure OIDC SSO, and manage teams with RBAC on Konnect.',
+  description: 'Kong Partner Enablement - Developer Portal: publish APIs, configure auth strategies, and manage teams on Konnect.',
 
   srcDir: '..',
   outDir: '../dist',
@@ -34,7 +34,7 @@ export default defineConfig({
     ['link', { rel: 'apple-touch-icon', href: '/learn-kong-dev-portal/favicon.png' }],
     ['meta', { name: 'theme-color', content: '#000F06' }],
     ['meta', { property: 'og:title', content: 'Kong Developer Portal Bootcamp' }],
-    ['meta', { property: 'og:description', content: 'Hands-on labs: publish APIs to Developer Portal, OIDC SSO, RBAC teams' }],
+    ['meta', { property: 'og:description', content: 'Hands-on labs: publish APIs to Developer Portal, auth strategies, teams' }],
     ['meta', { property: 'og:image', content: '/learn-kong-dev-portal/kong-konnect-logo.svg' }],
   ],
 
@@ -58,10 +58,10 @@ export default defineConfig({
       {
         text: '📚 Modules',
         items: [
-          { text: '📋 Overview',            link: '/module-01-developer-portal/' },
-          { text: '🌐 Developer Portal',    link: '/module-01-developer-portal/labs/01-dev-portal' },
-          { text: '🔐 OIDC Auth Code Flow', link: '/module-01-developer-portal/labs/01-oidc-auth-code' },
-          { text: '👥 RBAC & Teams',        link: '/module-01-developer-portal/labs/01-rbac-teams' },
+          { text: '📋 Overview',                      link: '/module-01-developer-portal/' },
+          { text: '🌐 Lab 01: Portal Setup',          link: '/module-01-developer-portal/labs/01-portal-setup' },
+          { text: '🔑 Lab 02: App Registration',      link: '/module-01-developer-portal/labs/02-app-registration' },
+          { text: '🎨 Lab 03: Customization & Teams', link: '/module-01-developer-portal/labs/03-portal-customization' },
         ],
       },
 
@@ -69,7 +69,7 @@ export default defineConfig({
         text: '🔗 Resources',
         items: [
           { text: '📖 Developer Portal Docs', link: 'https://developer.konghq.com/dev-portal/', target: '_blank' },
-          { text: '📖 RBAC Docs',             link: 'https://developer.konghq.com/gateway/kong-manager/rbac/', target: '_blank' },
+          { text: '📖 Konnect API Reference',  link: 'https://developer.konghq.com/api/konnect/portal-management/v3/', target: '_blank' },
           { text: '☁️ Konnect',              link: 'https://cloud.konghq.com', target: '_blank' },
         ],
       },
@@ -88,10 +88,10 @@ export default defineConfig({
         text: '🌐 Developer Portal',
         collapsed: false,
         items: [
-          { text: '📋 Overview',              link: '/module-01-developer-portal/' },
-          { text: '🌐 Lab: Developer Portal', link: '/module-01-developer-portal/labs/01-dev-portal' },
-          { text: '🔐 Lab: OIDC Auth Code',   link: '/module-01-developer-portal/labs/01-oidc-auth-code' },
-          { text: '👥 Lab: RBAC & Teams',     link: '/module-01-developer-portal/labs/01-rbac-teams' },
+          { text: '📋 Overview',                      link: '/module-01-developer-portal/' },
+          { text: '🌐 Lab 01: Portal Setup',          link: '/module-01-developer-portal/labs/01-portal-setup' },
+          { text: '🔑 Lab 02: App Registration',      link: '/module-01-developer-portal/labs/02-app-registration' },
+          { text: '🎨 Lab 03: Customization & Teams', link: '/module-01-developer-portal/labs/03-portal-customization' },
         ],
       },
     ],
