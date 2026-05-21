@@ -64,18 +64,7 @@ export default defineConfig({
           { text: '👥 RBAC & Teams',        link: '/module-01-developer-portal/labs/01-rbac-teams' },
         ],
       },
-      {
-        text: '🚀 Specialist Bootcamps',
-        items: [
-          { text: '🏠 API Gateway Bootcamp',  link: 'https://kong-grajesh-se.github.io/learn-kong-gateway/', target: '_blank' },
-          { text: '🤖 AI Gateway Bootcamp',   link: 'https://kong-grajesh-se.github.io/learn-kong-ai-gateway/', target: '_blank' },
-          { text: '🛠️ Agentic AI & MCP',      link: 'https://kong-grajesh-se.github.io/learn-kong-agentic-bootcamp/', target: '_blank' },
-          { text: '🔄 APIOps with decK',      link: 'https://kong-grajesh-se.github.io/learn-kong-apiops-bootcamp/', target: '_blank' },
-          { text: '🎮 Insomnia Bootcamp',     link: 'https://kong-grajesh-se.github.io/learn-insomnia/', target: '_blank' },
-          { text: '🤝 Bring Your Own Agent',  link: 'https://kong-grajesh-se.github.io/bring-your-own-agent/', target: '_blank' },
-          { text: '🌋 Volcano SDK Bootcamp', link: 'https://kong-grajesh-se.github.io/learn-volcano-sdk/', target: '_blank' },
-        ],
-      },
+
       {
         text: '🔗 Resources',
         items: [
@@ -84,6 +73,7 @@ export default defineConfig({
           { text: '☁️ Konnect',              link: 'https://cloud.konghq.com', target: '_blank' },
         ],
       },
+      { text: '🏠 All Bootcamps', link: 'https://kong-grajesh-se.github.io/learn-kong-bootcamps/', target: '_blank' },
     ],
 
     sidebar: [
@@ -102,18 +92,6 @@ export default defineConfig({
           { text: '🌐 Lab: Developer Portal', link: '/module-01-developer-portal/labs/01-dev-portal' },
           { text: '🔐 Lab: OIDC Auth Code',   link: '/module-01-developer-portal/labs/01-oidc-auth-code' },
           { text: '👥 Lab: RBAC & Teams',     link: '/module-01-developer-portal/labs/01-rbac-teams' },
-        ],
-      },
-      {
-        text: '🚀 Specialist Bootcamps',
-        collapsed: true,
-        items: [
-          { text: '🏠 API Gateway Bootcamp',  link: 'https://kong-grajesh-se.github.io/learn-kong-gateway/' },
-          { text: '🤖 AI Gateway Bootcamp',   link: 'https://kong-grajesh-se.github.io/learn-kong-ai-gateway/' },
-          { text: '🛠️ Agentic AI & MCP',      link: 'https://kong-grajesh-se.github.io/learn-kong-agentic-bootcamp/' },
-          { text: '🔄 APIOps with decK',      link: 'https://kong-grajesh-se.github.io/learn-kong-apiops-bootcamp/' },
-          { text: '🎮 Insomnia Bootcamp',     link: 'https://kong-grajesh-se.github.io/learn-insomnia/' },
-          { text: '🤝 Bring Your Own Agent',  link: 'https://kong-grajesh-se.github.io/bring-your-own-agent/' },
         ],
       },
     ],
