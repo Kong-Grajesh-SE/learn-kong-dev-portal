@@ -18,19 +18,7 @@ Konnect has **two separate** team systems for Dev Portal. Confusing them is the 
 | **Where** | Konnect UI → Organization → Teams | Konnect UI → Dev Portal → Access and Approvals → Teams |
 | **Created by** | Konnect org admin | Portal admin |
 
-```
-Konnect Organization
-│
-├── Layer 1: Org Teams (internal staff)
-│   ├── Portal Admin team → manages portal config, approves devs
-│   ├── API Owner team → publishes APIs, approves registrations
-│   └── Content Editor team → writes pages and guides
-│
-└── Dev Portal
-    └── Layer 2: Developer Teams (API consumers)
-        ├── travel-partners → sees Cars API (private), Hotels, Flights
-        └── public-developers → sees Hotels, Flights only
-```
+![Konnect Teams and Roles Architecture](../public/teams_and_roles_architecture.png)
 
 ---
 
