@@ -25,7 +25,7 @@ Without a portal, you're answering emails, manually creating API keys, and maint
 
 The **Konnect Developer Portal** is a fully managed, customizable website where developers can find, try, and subscribe to your APIs. It's built into the Konnect platform - no separate infrastructure to host or maintain.
 
-![Developer Portal Overview](../public/developer_portal_overview.png)
+![Developer Portal Overview](/developer_portal_overview.png)
 
 ## Three portal patterns
 
@@ -47,13 +47,13 @@ Dev Portal has a specific object model. Understanding it now saves confusion lat
 
 An **API Product** is the catalog entry that represents an API in Konnect. It's not the gateway service itself - it's the business-facing wrapper:
 
-![API Product Diagram](../public/api_product_diagram.png)
+![API Product Diagram](/api_product_diagram.png)
 
 ### Version
 
 A **Version** is a specific release of an API product. Each version holds an **OpenAPI specification** that generates the interactive documentation on the portal.
 
-![API Version Diagram](../public/api_version_diagram.png)
+![API Version Diagram](/api_version_diagram.png)
 
 Developers browsing the portal can switch between versions and see the docs for each.
 
@@ -61,7 +61,7 @@ Developers browsing the portal can switch between versions and see the docs for 
 
 An **Implementation** links an API product to a running **gateway service** on a control plane. This is what makes the "Try It" button work - without an implementation, the spec is just documentation with no live endpoint.
 
-![API Implementation Diagram](../public/api_implementation_diagram.png)
+![API Implementation Diagram](/api_implementation_diagram.png)
 
 ### Publication
 
@@ -71,7 +71,7 @@ A **Publication** publishes an API product to a specific portal. It controls:
 - **Auth strategy**: which credential type developers get when they register
 - **Auto-approve**: whether registration requires admin approval
 
-![API Publication Diagram](../public/api_publication_diagram.png)
+![API Publication Diagram](/api_publication_diagram.png)
 
 ### Auth Strategy
 
@@ -87,13 +87,13 @@ Auth strategies are **reusable** - the same strategy can protect multiple APIs o
 
 ### Putting it all together
 
-![Putting it all together](../public/putting_it_all_together.png)
+![Putting it all together](/putting_it_all_together.png)
 
 ## The API lifecycle on Konnect
 
 Where Dev Portal fits in the broader picture:
 
-![The API lifecycle on Konnect](../public/api_lifecycle_konnect.png)
+![The API lifecycle on Konnect](/api_lifecycle_konnect.png)
 
 You've already done the left and middle columns in previous bootcamps. Now you'll complete the right column.
 
@@ -108,7 +108,7 @@ When a developer uses your portal:
 5. **Subscribe** - Registers their app for an API, receives credentials (API key or OAuth)
 6. **Call** - Makes authenticated requests through Kong Gateway
 
-![How the portal works at runtime](../public/portal_runtime_flow.png)
+![How the portal works at runtime](/portal_runtime_flow.png)
 
 The gateway validates the API key using the same `key-auth` plugin you configured in the API Gateway bootcamp - but now the consumer and credentials are managed through the portal instead of manually.
 

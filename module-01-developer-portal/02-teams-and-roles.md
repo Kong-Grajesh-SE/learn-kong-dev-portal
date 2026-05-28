@@ -18,7 +18,7 @@ Konnect has **two separate** team systems for Dev Portal. Confusing them is the 
 | **Where** | Konnect UI → Organization → Teams | Konnect UI → Dev Portal → Access and Approvals → Teams |
 | **Created by** | Konnect org admin | Portal admin |
 
-![Konnect Teams and Roles Architecture](../public/teams_and_roles_architecture.png)
+![Konnect Teams and Roles Architecture](/teams_and_roles_architecture.png)
 
 ---
 
@@ -151,7 +151,7 @@ These control which **external developers** (your API consumers) can see and reg
 3. **Assign API roles** to each team (which APIs they can access, Consumer vs Viewer)
 4. **Add developers** to teams - manually, or automatically via IdP group mapping
 
-![How developer RBAC works](../public/developer_rbac_works.png)
+![How developer RBAC works](/developer_rbac_works.png)
 
 ### Visibility + RBAC interaction
 
@@ -178,7 +178,7 @@ This is useful when a partner organization has multiple developers who all need 
 
 If your portal uses SSO (OIDC or SAML), you can **automatically map** IdP groups to portal developer teams:
 
-![IdP team mapping](../public/idp_team_mapping.png)
+![IdP team mapping](/idp_team_mapping.png)
 
 When a developer signs in via SSO, Konnect reads their group claims and automatically adds them to the corresponding portal teams. No manual assignment needed.
 
@@ -201,7 +201,7 @@ Configure this in **Dev Portal → Settings → Team Mappings**.
 
 ## Summary
 
-![Teams and Roles Diagram](../public/teams_and_roles.png)
+![Teams and Roles Diagram](/teams_and_roles.png)
 
 ---
 
