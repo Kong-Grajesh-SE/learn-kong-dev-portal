@@ -110,62 +110,13 @@ Auth strategies are **reusable** - the same strategy can protect multiple APIs o
 
 ### Putting it all together
 
-```
-Konnect Organization
-│
-├── Auth Strategies
-│   ├── mytravel-key-auth (key_auth)
-│   └── partner-oidc (openid_connect)
-│
-├── API Products
-│   ├── Flights API
-│   │   ├── Version v1.0.0 (OpenAPI spec)
-│   │   ├── Implementation → flights-svc on production-cp
-│   │   ├── Publication → partner-portal (public, key-auth)
-│   │   └── Documents: Quick Start guide
-│   ├── Hotels API
-│   │   └── ...
-│   └── Cars API (private - partners only)
-│       └── ...
-│
-└── Dev Portals
-    ├── partner-portal (*.kongportals.com)
-    │   ├── Customization (theme, logo)
-    │   ├── Pages (Getting Started, Terms)
-    │   ├── Teams (travel-partners, public-developers)
-    │   └── Identity Providers (OIDC, SAML)
-    └── internal-portal
-        └── ...
-```
+![Putting it all together](../public/putting_it_all_together.png)
 
 ## The API lifecycle on Konnect
 
 Where Dev Portal fits in the broader picture:
 
-```
-Build APIs              Manage Config           Publish to Developers
-──────────────          ──────────────           ────────────────────
-                                                 
-  Code your             decK dump / sync         Create API Product
-  services              ──────────►              ──────────►
-      │                                                │
-      ▼                 Apply plugins              Add Version
-  Deploy to             via decK or UI             (OpenAPI spec)
-  gateway               ──────────►                    │
-      │                                                ▼
-      ▼                 Kong Gateway               Link Implementation
-  Services              ────────────               (gateway service)
-  Routes                Traffic flows                  │
-  running               through plugins                ▼
-                                                   Publish to Portal
- ◄─── API GW Bootcamp ──► ◄── APIOps ──►         (visibility + auth)
-                                                       │
-                                                       ▼
-                                                   Developers
-                                                   self-serve
-                                                   
-                                          ◄── Dev Portal Bootcamp ──►
-```
+![The API lifecycle on Konnect](../public/api_lifecycle_konnect.png)
 
 You've already done the left and middle columns in previous bootcamps. Now you'll complete the right column.
 
@@ -180,19 +131,7 @@ When a developer uses your portal:
 5. **Subscribe** - Registers their app for an API, receives credentials (API key or OAuth)
 6. **Call** - Makes authenticated requests through Kong Gateway
 
-```
-Developer                    Portal                    Kong Gateway
-    │                          │                            │
-    │── Browse API catalog ───►│                            │
-    │◄── API list + specs ─────│                            │
-    │                          │                            │
-    │── Create app ───────────►│                            │
-    │◄── App + API key ────────│                            │
-    │                          │                            │
-    │── GET /api/flights ──────────────────────────────────►│
-    │   (apikey: abc123)       │                            │
-    │◄── 200 OK + flight data ─────────────────────────────│
-```
+![How the portal works at runtime](../public/portal_runtime_flow.png)
 
 The gateway validates the API key using the same `key-auth` plugin you configured in the API Gateway bootcamp - but now the consumer and credentials are managed through the portal instead of manually.
 

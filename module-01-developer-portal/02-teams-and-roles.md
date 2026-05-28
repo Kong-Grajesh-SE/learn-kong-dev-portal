@@ -230,29 +230,7 @@ Configure this in **Dev Portal → Settings → Team Mappings**.
 
 ## Summary
 
-```
-┌─────────────────────────────────────────────────────────┐
-│ Layer 1: Konnect Org Teams                              │
-│ WHO MANAGES the portal                                  │
-│                                                         │
-│  Org Admin ─── Portal Admin ─── API Owner               │
-│                    │                │                    │
-│              Content Editor    API Publisher             │
-│                    │                │                    │
-│              edits pages      publishes APIs             │
-│              & snippets       approves regs              │
-├─────────────────────────────────────────────────────────┤
-│ Layer 2: Portal Developer Teams                         │
-│ WHO USES the portal                                     │
-│                                                         │
-│  travel-partners ─── Cars API (Consumer)                │
-│       │              Hotels API (Consumer)              │
-│       │              Flights API (Consumer)             │
-│       │                                                 │
-│  public-developers ── Hotels API (Consumer)             │
-│                       Flights API (Consumer)            │
-└─────────────────────────────────────────────────────────┘
-```
+![Teams and Roles Diagram](../public/teams_and_roles.png)
 
 ---
 
