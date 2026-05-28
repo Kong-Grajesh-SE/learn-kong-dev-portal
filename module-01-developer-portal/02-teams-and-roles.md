@@ -151,31 +151,7 @@ These control which **external developers** (your API consumers) can see and reg
 3. **Assign API roles** to each team (which APIs they can access, Consumer vs Viewer)
 4. **Add developers** to teams - manually, or automatically via IdP group mapping
 
-```
-Dev Portal
-├── RBAC: Enabled
-│
-├── Team: travel-partners
-│   ├── APIs:
-│   │   ├── Flights API → Consumer (can register + call)
-│   │   ├── Hotels API → Consumer
-│   │   └── Cars API → Consumer (private API, only visible to this team)
-│   └── Developers:
-│       ├── alice@travelagency.com
-│       └── bob@touroperator.com
-│
-├── Team: public-developers
-│   ├── APIs:
-│   │   ├── Flights API → Consumer
-│   │   └── Hotels API → Consumer
-│   │   (no Cars API access)
-│   └── Developers:
-│       ├── charlie@startup.com
-│       └── diana@hackathon.io
-│
-└── Unassigned developers
-    └── (can only see public APIs, no private APIs)
-```
+![How developer RBAC works](../public/developer_rbac_works.png)
 
 ### Visibility + RBAC interaction
 
@@ -202,12 +178,7 @@ This is useful when a partner organization has multiple developers who all need 
 
 If your portal uses SSO (OIDC or SAML), you can **automatically map** IdP groups to portal developer teams:
 
-```
-Identity Provider (Okta, Azure AD, etc.)
-├── Group: travel-agents     ──►  Portal Team: travel-partners
-├── Group: developers        ──►  Portal Team: public-developers
-└── Group: internal-staff    ──►  Portal Team: internal-api-users
-```
+![IdP team mapping](../public/idp_team_mapping.png)
 
 When a developer signs in via SSO, Konnect reads their group claims and automatically adds them to the corresponding portal teams. No manual assignment needed.
 

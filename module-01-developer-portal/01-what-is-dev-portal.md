@@ -47,25 +47,13 @@ Dev Portal has a specific object model. Understanding it now saves confusion lat
 
 An **API Product** is the catalog entry that represents an API in Konnect. It's not the gateway service itself - it's the business-facing wrapper:
 
-```
-API Product: "Flights API"
-├── Display name, description, labels
-├── Versions (each with an OpenAPI spec)
-├── Implementations (links to gateway services)
-├── Publications (published to one or more portals)
-└── Documents (integration guides, tutorials)
-```
+![API Product Diagram](../public/api_product_diagram.png)
 
 ### Version
 
 A **Version** is a specific release of an API product. Each version holds an **OpenAPI specification** that generates the interactive documentation on the portal.
 
-```
-Flights API
-├── v1.0.0 → flights-openapi-v1.yaml
-├── v2.0.0 → flights-openapi-v2.yaml  (latest)
-└── v2.1.0-beta → flights-openapi-v2.1-beta.yaml
-```
+![API Version Diagram](../public/api_version_diagram.png)
 
 Developers browsing the portal can switch between versions and see the docs for each.
 
@@ -73,12 +61,7 @@ Developers browsing the portal can switch between versions and see the docs for 
 
 An **Implementation** links an API product to a running **gateway service** on a control plane. This is what makes the "Try It" button work - without an implementation, the spec is just documentation with no live endpoint.
 
-```
-API Product (Flights API)
-  └── Implementation
-        ├── control_plane: "production-cp"
-        └── gateway_service: "flights-svc"
-```
+![API Implementation Diagram](../public/api_implementation_diagram.png)
 
 ### Publication
 
@@ -88,13 +71,7 @@ A **Publication** publishes an API product to a specific portal. It controls:
 - **Auth strategy**: which credential type developers get when they register
 - **Auto-approve**: whether registration requires admin approval
 
-```
-API Product (Flights API)
-  └── Publication
-        ├── portal: "mytravel-portal"
-        ├── visibility: "public"
-        └── auth_strategy: "mytravel-key-auth"
-```
+![API Publication Diagram](../public/api_publication_diagram.png)
 
 ### Auth Strategy
 
