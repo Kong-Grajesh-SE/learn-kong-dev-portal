@@ -8,6 +8,8 @@
 
 A hands-on bootcamp for publishing APIs on **Kong Konnect Developer Portal**. Create a self-service portal, configure auth strategies, and set up team-based access control - all using the Konnect UI and REST API.
 
+![Bootcamp Recap](./public/bootcamp_recap.png)
+
 ## Overview
 
 | | |
