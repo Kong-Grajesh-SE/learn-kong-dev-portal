@@ -16,7 +16,9 @@ export default defineConfig({
   ignoreDeadLinks: true,
 
   rewrites: {
-    'module-01-developer-portal/README.md': 'module-01-developer-portal/index.md',
+    'module-01-portal-setup/README.md': 'module-01-portal-setup/index.md',
+    'module-02-app-registration/README.md': 'module-02-app-registration/index.md',
+    'module-03-portal-customization/README.md': 'module-03-portal-customization/index.md',
   },
 
   srcExclude: [
@@ -58,12 +60,11 @@ export default defineConfig({
       {
         text: '📚 Modules',
         items: [
-          { text: '📋 Overview',                      link: '/module-01-developer-portal/' },
-          { text: '📖 What is Dev Portal?',            link: '/module-01-developer-portal/01-what-is-dev-portal' },
-          { text: '👥 Teams and Roles',                link: '/module-01-developer-portal/02-teams-and-roles' },
-          { text: '🌐 Lab 01: Portal Setup',          link: '/module-01-developer-portal/labs/01-portal-setup' },
-          { text: '🔑 Lab 02: App Registration',      link: '/module-01-developer-portal/labs/02-app-registration' },
-          { text: '🎨 Lab 03: Customization & Teams', link: '/module-01-developer-portal/labs/03-portal-customization' },
+          { text: '� What is Dev Portal?',            link: '/module-01-portal-setup/01-what-is-dev-portal' },
+          { text: '👥 Teams and Roles',                link: '/module-01-portal-setup/02-teams-and-roles' },
+          { text: '🌐 Module 01: Portal Setup',       link: '/module-01-portal-setup/' },
+          { text: '🔑 Module 02: App Registration',   link: '/module-02-app-registration/' },
+          { text: '🎨 Module 03: Customization & Teams', link: '/module-03-portal-customization/' },
         ],
       },
 
@@ -90,18 +91,32 @@ export default defineConfig({
         text: '📖 Pre-reads',
         collapsed: false,
         items: [
-          { text: '📖 What is Dev Portal?',  link: '/module-01-developer-portal/01-what-is-dev-portal' },
-          { text: '👥 Teams and Roles',        link: '/module-01-developer-portal/02-teams-and-roles' },
+          { text: '📖 What is Dev Portal?',  link: '/module-01-portal-setup/01-what-is-dev-portal' },
+          { text: '👥 Teams and Roles',        link: '/module-01-portal-setup/02-teams-and-roles' },
         ],
       },
       {
-        text: '🌐 Developer Portal Labs',
+        text: 'Module 01 - Portal Setup & API Publishing',
         collapsed: false,
         items: [
-          { text: '📋 Overview',                      link: '/module-01-developer-portal/' },
-          { text: '🌐 Lab 01: Portal Setup',          link: '/module-01-developer-portal/labs/01-portal-setup' },
-          { text: '🔑 Lab 02: App Registration',      link: '/module-01-developer-portal/labs/02-app-registration' },
-          { text: '🎨 Lab 03: Customization & Teams', link: '/module-01-developer-portal/labs/03-portal-customization' },
+          { text: 'Overview',                      link: '/module-01-portal-setup/' },
+          { text: 'Lab 01: Portal Setup',          link: '/module-01-portal-setup/labs/01-portal-setup' },
+        ],
+      },
+      {
+        text: 'Module 02 - App Registration & Auth',
+        collapsed: false,
+        items: [
+          { text: 'Overview',                      link: '/module-02-app-registration/' },
+          { text: 'Lab 01: App Registration',      link: '/module-02-app-registration/labs/01-app-registration' },
+        ],
+      },
+      {
+        text: 'Module 03 - Portal Customization & Teams',
+        collapsed: false,
+        items: [
+          { text: 'Overview',                      link: '/module-03-portal-customization/' },
+          { text: 'Lab 01: Customization & Teams', link: '/module-03-portal-customization/labs/01-portal-customization' },
         ],
       },
     ],

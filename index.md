@@ -13,8 +13,8 @@ hero:
       text: "Prerequisites"
       link: /prerequisites
     - theme: brand
-      text: "Start Module →"
-      link: /module-01-developer-portal/
+      text: "Start Module 01 →"
+      link: /module-01-portal-setup/
     - theme: alt
       text: "☁️ Konnect ↗"
       link: https://cloud.konghq.com
@@ -23,26 +23,26 @@ features:
   - icon: 📖
     title: "Pre-read: What is Dev Portal?"
     details: "Understand the product, its architecture, key objects (API Product, Version, Implementation, Publication), and where it fits in the API lifecycle. ~10 min."
-    link: /module-01-developer-portal/01-what-is-dev-portal
+    link: /module-01-portal-setup/01-what-is-dev-portal
     linkText: Read now
   - icon: 👥
     title: "Pre-read: Teams and Roles"
     details: "Two layers of access control - Konnect org teams (who manages the portal) vs portal developer teams (who sees which APIs). ~10 min."
-    link: /module-01-developer-portal/02-teams-and-roles
+    link: /module-01-portal-setup/02-teams-and-roles
     linkText: Read now
   - icon: 🌐
-    title: "Lab 01 - Portal Setup & API Publishing"
+    title: "Module 01 - Portal Setup & API Publishing"
     details: "Create a Developer Portal, publish API products with OpenAPI specs, link to gateway services, and browse the live portal. ~70 min."
-    link: /module-01-developer-portal/labs/01-portal-setup
-    linkText: Start lab
+    link: /module-01-portal-setup/
+    linkText: Start module
   - icon: 🔑
-    title: "Lab 02 - App Registration & Auth Strategies"
+    title: "Module 02 - App Registration & Auth"
     details: "Configure key-auth for developer self-service, walk through registration, make authenticated requests. ~60 min."
-    link: /module-01-developer-portal/labs/02-app-registration
-    linkText: Start lab
+    link: /module-02-app-registration/
+    linkText: Start module
   - icon: 🎨
-    title: "Lab 03 - Portal Customization & Teams"
+    title: "Module 03 - Portal Customization & Teams"
     details: "Brand the portal, add pages and snippets, configure visibility, teams, RBAC, and SSO identity providers. ~65 min."
-    link: /module-01-developer-portal/labs/03-portal-customization
-    linkText: Start lab
+    link: /module-03-portal-customization/
+    linkText: Start module
 ---

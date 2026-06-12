@@ -2,7 +2,7 @@
 
 ![Kong Gateway 3.14+](https://img.shields.io/badge/Kong%20Gateway-3.14%2B-CCFF00?style=for-the-badge&labelColor=001408)
 ![Platform: Konnect](https://img.shields.io/badge/Platform-Konnect-CCFF00?style=for-the-badge&labelColor=001408)
-![Modules: 1](https://img.shields.io/badge/Modules-1-CCFF00?style=for-the-badge&labelColor=001408)
+![Modules: 3](https://img.shields.io/badge/Modules-3-CCFF00?style=for-the-badge&labelColor=001408)
 
 > **Continues from the APIOps bootcamp.** You've built gateway services and managed config with decK. Now expose those APIs to external developers.
 
@@ -15,23 +15,17 @@ A hands-on bootcamp for publishing APIs on **Kong Konnect Developer Portal**. Cr
 | | |
 |---|---|
 | **Platform** | **Kong Konnect** (free tier includes Dev Portal) |
-| **Format** | 1 module, 3 labs (~3 hours) |
+| **Format** | 3 modules, 3 labs (~3 hours) |
 | **Flow** | Portal Setup → App Registration → Customization & Teams |
 | **Tools** | Konnect UI + Konnect REST API (curl) |
 
-## Module
+## Modules
 
 | # | Module | Key Topics |
 |---|---|---|
-| 01 | **Developer Portal** | API products, OpenAPI specs, auth strategies, app registration, pages, teams, SSO |
-
-## Labs
-
-| Lab | Topic |
-|---|---|
-| [01 - Portal Setup & API Publishing](./module-01-developer-portal/labs/01-portal-setup.md) | Create portal, API products, versions, implementations, publications |
-| [02 - App Registration & Auth Strategies](./module-01-developer-portal/labs/02-app-registration.md) | Key-auth strategy, developer self-service, the developer experience |
-| [03 - Portal Customization & Teams](./module-01-developer-portal/labs/03-portal-customization.md) | Theme, pages, snippets, visibility, teams, RBAC, SSO |
+| 01 | [Portal Setup & API Publishing](./module-01-portal-setup/) | API products, OpenAPI specs, versions, implementations, publications |
+| 02 | [App Registration & Auth](./module-02-app-registration/) | Key-auth strategy, developer self-service, the developer experience |
+| 03 | [Portal Customization & Teams](./module-03-portal-customization/) | Theme, pages, snippets, visibility, teams, RBAC, SSO |
 
 ## Prerequisites
 
