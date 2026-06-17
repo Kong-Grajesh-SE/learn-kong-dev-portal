@@ -1,6 +1,6 @@
 # Lab 01 - Portal Setup & API Publishing
 
-> **Goal:** Create a Developer Portal on Konnect, publish the mytravel.com APIs with OpenAPI specs, and link them to the gateway services you built in earlier bootcamps.
+> **Goal:** Create a Developer Portal on Konnect, publish the bookstore.com APIs with OpenAPI specs, and link them to the gateway services you built in earlier bootcamps.
 >
 > Every step has a **Checkpoint** - if the expected output doesn't match, stop and fix before continuing.
 
@@ -48,8 +48,8 @@ This lab creates a Developer Portal where external developers can browse your AP
 3. Click **New Portal**
 4. Fill in:
    - **Name:** `mytravel-portal`
-   - **Display Name:** `mytravel.com Developer Portal`
-   - **Description:** `APIs for the mytravel.com travel platform - flights, hotels, cars, and weather`
+   - **Display Name:** `bookstore.com Developer Portal`
+   - **Description:** `APIs for the bookstore.com bookstore platform - flights, hotels, cars, and weather`
 5. Leave **Authentication** enabled (default)
 6. Click **Create**
 
@@ -61,8 +61,8 @@ curl -s -X POST "$KONNECT_API/v3/portals" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "mytravel-portal",
-    "display_name": "mytravel.com Developer Portal",
-    "description": "APIs for the mytravel.com travel platform - flights, hotels, cars, and weather",
+    "display_name": "bookstore.com Developer Portal",
+    "description": "APIs for the bookstore.com bookstore platform - flights, hotels, cars, and weather",
     "authentication_enabled": true,
     "auto_approve_developers": false,
     "auto_approve_applications": false,
@@ -164,13 +164,13 @@ info:
   title: Flights API
   version: "1.0.0"
   description: |
-    Search and book flights across airlines. Part of the mytravel.com platform.
+    Search and book flights across airlines. Part of the bookstore.com platform.
 
     ## Authentication
     All endpoints require an API key passed in the `apikey` header.
 
 servers:
-  - url: https://api.mytravel.com
+  - url: https://api.bookstore.com
     description: Production (via Kong Gateway)
 
 paths:
@@ -319,10 +319,10 @@ openapi: 3.1.0
 info:
   title: Hotels API
   version: "1.0.0"
-  description: Search and book hotel rooms worldwide. Part of the mytravel.com platform.
+  description: Search and book hotel rooms worldwide. Part of the bookstore.com platform.
 
 servers:
-  - url: https://api.mytravel.com
+  - url: https://api.bookstore.com
 
 paths:
   /api/hotels:
@@ -388,10 +388,10 @@ openapi: 3.1.0
 info:
   title: Cars API
   version: "1.0.0"
-  description: Search and rent vehicles at any airport. Part of the mytravel.com platform.
+  description: Search and rent vehicles at any airport. Part of the bookstore.com platform.
 
 servers:
-  - url: https://api.mytravel.com
+  - url: https://api.bookstore.com
 
 paths:
   /api/cars:

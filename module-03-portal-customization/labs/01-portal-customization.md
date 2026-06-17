@@ -20,7 +20,7 @@ curl -s -H "Authorization: Bearer $KONNECT_PAT" \
 ## The story continues
 
 Your portal is functional - developers can find APIs and register for access. But it looks generic. Your product team wants:
-1. **Branded appearance** - match the mytravel.com look and feel
+1. **Branded appearance** - match the bookstore.com look and feel
 2. **Getting-started guides** - help developers onboard faster
 3. **Team-based access** - partners see different APIs than internal developers
 4. **SSO** - developers log in with their existing corporate identity
@@ -102,7 +102,7 @@ curl -s -X POST "$KONNECT_API/v3/portals/$PORTAL_ID/pages" \
     "slug": "getting-started",
     "visibility": "public",
     "status": "published",
-    "content": "# Getting Started with mytravel.com APIs\n\nWelcome to the mytravel.com Developer Portal. This guide walks you through getting your first API key and making your first request.\n\n## Step 1: Create an Account\n\nClick **Sign Up** in the top-right corner and fill in your details.\n\n## Step 2: Create an Application\n\nOnce registered, go to **My Apps** and create a new application. Give it a name that describes your integration.\n\n## Step 3: Register for an API\n\nBrowse the API catalog and click **Register** on any API you want to use. Select your application and you will receive an API key.\n\n## Step 4: Make Your First Request\n\n```bash\ncurl -H \"apikey: YOUR_API_KEY\" https://api.mytravel.com/api/bookstore\n```\n\nThat is it! You are now connected to the mytravel.com platform.\n\n## Rate Limits\n\n| Tier | Requests/min | Description |\n|---|---|---|\n| Free | 100 | Default for all new apps |\n| Professional | 1,000 | Contact sales to upgrade |\n| Enterprise | 10,000 | Custom SLA |\n\n## Support\n\nFor API support, email api-support@mytravel.com or visit our support portal."
+    "content": "# Getting Started with bookstore.com APIs\n\nWelcome to the bookstore.com Developer Portal. This guide walks you through getting your first API key and making your first request.\n\n## Step 1: Create an Account\n\nClick **Sign Up** in the top-right corner and fill in your details.\n\n## Step 2: Create an Application\n\nOnce registered, go to **My Apps** and create a new application. Give it a name that describes your integration.\n\n## Step 3: Register for an API\n\nBrowse the API catalog and click **Register** on any API you want to use. Select your application and you will receive an API key.\n\n## Step 4: Make Your First Request\n\n```bash\ncurl -H \"apikey: YOUR_API_KEY\" https://api.bookstore.com/api/bookstore\n```\n\nThat is it! You are now connected to the bookstore.com platform.\n\n## Rate Limits\n\n| Tier | Requests/min | Description |\n|---|---|---|\n| Free | 100 | Default for all new apps |\n| Professional | 1,000 | Contact sales to upgrade |\n| Enterprise | 10,000 | Custom SLA |\n\n## Support\n\nFor API support, email api-support@bookstore.com or visit our support portal."
   }' | jq '{id, title, slug, status}'
 ```
 
@@ -117,7 +117,7 @@ curl -s -X POST "$KONNECT_API/v3/portals/$PORTAL_ID/pages" \
     "slug": "terms-of-service",
     "visibility": "public",
     "status": "published",
-    "content": "# Terms of Service\n\n**Effective Date:** January 1, 2026\n\nBy accessing the mytravel.com APIs, you agree to the following terms:\n\n## Acceptable Use\n\n- Use the APIs only for their intended purpose\n- Do not exceed your rate limit tier\n- Do not share API keys across applications\n- Do not scrape or cache bulk data without authorization\n\n## Data Privacy\n\nAll personal data transmitted through our APIs is subject to our Privacy Policy. You are responsible for handling user data in compliance with applicable regulations (GDPR, CCPA, etc.).\n\n## SLA\n\nWe target 99.9% uptime for production API endpoints. Scheduled maintenance windows are announced 72 hours in advance.\n\n## Changes\n\nWe may update these terms at any time. Continued use after changes constitutes acceptance."
+    "content": "# Terms of Service\n\n**Effective Date:** January 1, 2026\n\nBy accessing the bookstore.com APIs, you agree to the following terms:\n\n## Acceptable Use\n\n- Use the APIs only for their intended purpose\n- Do not exceed your rate limit tier\n- Do not share API keys across applications\n- Do not scrape or cache bulk data without authorization\n\n## Data Privacy\n\nAll personal data transmitted through our APIs is subject to our Privacy Policy. You are responsible for handling user data in compliance with applicable regulations (GDPR, CCPA, etc.).\n\n## SLA\n\nWe target 99.9% uptime for production API endpoints. Scheduled maintenance windows are announced 72 hours in advance.\n\n## Changes\n\nWe may update these terms at any time. Continued use after changes constitutes acceptance."
   }' | jq '{id, title, slug, status}'
 ```
 
@@ -161,7 +161,7 @@ curl -s -X POST "$KONNECT_API/v3/apis/$FLIGHTS_API_ID/documents" \
     "title": "Flights API Quick Start",
     "slug": "quick-start",
     "status": "published",
-    "content": "# Flights API Quick Start\n\n## Search Flights\n\nFind flights between two airports on a specific date:\n\n```bash\ncurl -H \"apikey: YOUR_KEY\" \\\n  \"https://api.mytravel.com/api/bookstore?origin=LHR&destination=JFK&date=2026-07-15\"\n```\n\n## Book a Flight\n\nOnce you have found a flight, book it:\n\n```bash\ncurl -X POST -H \"apikey: YOUR_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"{\\\"flight_id\\\": 42, \\\"passenger_name\\\": \\\"Jane Doe\\\", \\\"seats\\\": 2}\" \\\n  https://api.mytravel.com/api/bookings\n```\n\n## Error Handling\n\n| Status | Meaning |\n|---|---|\n| 200 | Success |\n| 401 | Missing or invalid API key |\n| 404 | Flight not found |\n| 429 | Rate limit exceeded - check Retry-After header |"
+    "content": "# Flights API Quick Start\n\n## Search Flights\n\nFind flights between two airports on a specific date:\n\n```bash\ncurl -H \"apikey: YOUR_KEY\" \\\n  \"https://api.bookstore.com/api/bookstore?origin=LHR&destination=JFK&date=2026-07-15\"\n```\n\n## Book a Flight\n\nOnce you have found a flight, book it:\n\n```bash\ncurl -X POST -H \"apikey: YOUR_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"{\\\"flight_id\\\": 42, \\\"passenger_name\\\": \\\"Jane Doe\\\", \\\"seats\\\": 2}\" \\\n  https://api.bookstore.com/api/bookings\n```\n\n## Error Handling\n\n| Status | Meaning |\n|---|---|\n| 200 | Success |\n| 401 | Missing or invalid API key |\n| 404 | Flight not found |\n| 429 | Rate limit exceeded - check Retry-After header |"
   }' | jq '{id, title, slug}'
 ```
 
@@ -350,7 +350,7 @@ curl -s -X POST "$KONNECT_API/v3/portals/$PORTAL_ID/snippets" \
     "title": "Need Help?",
     "visibility": "public",
     "status": "published",
-    "content": "Having trouble? Reach out to our API support team at **api-support@mytravel.com** or join our [Slack community](https://mytravel-dev.slack.com)."
+    "content": "Having trouble? Reach out to our API support team at **api-support@bookstore.com** or join our [Slack community](https://mytravel-dev.slack.com)."
   }' | jq '{id, name, status}'
 ```
 
