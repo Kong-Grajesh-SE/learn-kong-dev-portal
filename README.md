@@ -34,7 +34,7 @@ A hands-on bootcamp for publishing APIs on **Kong Konnect Developer Portal**. Cr
 | Konnect account | [cloud.konghq.com](https://cloud.konghq.com) (free tier) |
 | Konnect PAT | [Account → Tokens](https://cloud.konghq.com/global/account/tokens) |
 | curl + jq | Pre-installed on macOS; `brew install jq` if needed |
-| Prior bootcamp services | `flights-svc`, `hotels-svc`, `cars-svc` on your control plane |
+| Prior bootcamp services | `bookstore-service`, `inventory-service`, `payments-service` on your control plane |
 
 ```bash
 export KONNECT_PAT="kpat_..."

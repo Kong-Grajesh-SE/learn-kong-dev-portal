@@ -102,7 +102,7 @@ curl -s -X POST "$KONNECT_API/v3/portals/$PORTAL_ID/pages" \
     "slug": "getting-started",
     "visibility": "public",
     "status": "published",
-    "content": "# Getting Started with mytravel.com APIs\n\nWelcome to the mytravel.com Developer Portal. This guide walks you through getting your first API key and making your first request.\n\n## Step 1: Create an Account\n\nClick **Sign Up** in the top-right corner and fill in your details.\n\n## Step 2: Create an Application\n\nOnce registered, go to **My Apps** and create a new application. Give it a name that describes your integration.\n\n## Step 3: Register for an API\n\nBrowse the API catalog and click **Register** on any API you want to use. Select your application and you will receive an API key.\n\n## Step 4: Make Your First Request\n\n```bash\ncurl -H \"apikey: YOUR_API_KEY\" https://api.mytravel.com/api/flights\n```\n\nThat is it! You are now connected to the mytravel.com platform.\n\n## Rate Limits\n\n| Tier | Requests/min | Description |\n|---|---|---|\n| Free | 100 | Default for all new apps |\n| Professional | 1,000 | Contact sales to upgrade |\n| Enterprise | 10,000 | Custom SLA |\n\n## Support\n\nFor API support, email api-support@mytravel.com or visit our support portal."
+    "content": "# Getting Started with mytravel.com APIs\n\nWelcome to the mytravel.com Developer Portal. This guide walks you through getting your first API key and making your first request.\n\n## Step 1: Create an Account\n\nClick **Sign Up** in the top-right corner and fill in your details.\n\n## Step 2: Create an Application\n\nOnce registered, go to **My Apps** and create a new application. Give it a name that describes your integration.\n\n## Step 3: Register for an API\n\nBrowse the API catalog and click **Register** on any API you want to use. Select your application and you will receive an API key.\n\n## Step 4: Make Your First Request\n\n```bash\ncurl -H \"apikey: YOUR_API_KEY\" https://api.mytravel.com/api/bookstore\n```\n\nThat is it! You are now connected to the mytravel.com platform.\n\n## Rate Limits\n\n| Tier | Requests/min | Description |\n|---|---|---|\n| Free | 100 | Default for all new apps |\n| Professional | 1,000 | Contact sales to upgrade |\n| Enterprise | 10,000 | Custom SLA |\n\n## Support\n\nFor API support, email api-support@mytravel.com or visit our support portal."
   }' | jq '{id, title, slug, status}'
 ```
 
@@ -132,7 +132,7 @@ curl -s -X POST "$KONNECT_API/v3/portals/$PORTAL_ID/pages" \
     "slug": "changelog",
     "visibility": "public",
     "status": "published",
-    "content": "# API Changelog\n\n## 2026-05-01 - Flights API v1.0.0\n\n- Initial release\n- Endpoints: GET /api/flights, GET /api/flights/{id}, POST /api/bookings\n- Authentication: API key in `apikey` header\n\n## 2026-05-01 - Hotels API v1.0.0\n\n- Initial release\n- Endpoints: GET /api/hotels, GET /api/hotels/{id}\n\n## 2026-05-01 - Cars API v1.0.0\n\n- Initial release\n- Endpoints: GET /api/cars\n- Filter by airport code and pickup date"
+    "content": "# API Changelog\n\n## 2026-05-01 - Flights API v1.0.0\n\n- Initial release\n- Endpoints: GET /api/bookstore, GET /api/bookstore/{id}, POST /api/bookings\n- Authentication: API key in `apikey` header\n\n## 2026-05-01 - Hotels API v1.0.0\n\n- Initial release\n- Endpoints: GET /api/hotels, GET /api/hotels/{id}\n\n## 2026-05-01 - Cars API v1.0.0\n\n- Initial release\n- Endpoints: GET /api/cars\n- Filter by airport code and pickup date"
   }' | jq '{id, title, slug, status}'
 ```
 
@@ -161,7 +161,7 @@ curl -s -X POST "$KONNECT_API/v3/apis/$FLIGHTS_API_ID/documents" \
     "title": "Flights API Quick Start",
     "slug": "quick-start",
     "status": "published",
-    "content": "# Flights API Quick Start\n\n## Search Flights\n\nFind flights between two airports on a specific date:\n\n```bash\ncurl -H \"apikey: YOUR_KEY\" \\\n  \"https://api.mytravel.com/api/flights?origin=LHR&destination=JFK&date=2026-07-15\"\n```\n\n## Book a Flight\n\nOnce you have found a flight, book it:\n\n```bash\ncurl -X POST -H \"apikey: YOUR_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"{\\\"flight_id\\\": 42, \\\"passenger_name\\\": \\\"Jane Doe\\\", \\\"seats\\\": 2}\" \\\n  https://api.mytravel.com/api/bookings\n```\n\n## Error Handling\n\n| Status | Meaning |\n|---|---|\n| 200 | Success |\n| 401 | Missing or invalid API key |\n| 404 | Flight not found |\n| 429 | Rate limit exceeded - check Retry-After header |"
+    "content": "# Flights API Quick Start\n\n## Search Flights\n\nFind flights between two airports on a specific date:\n\n```bash\ncurl -H \"apikey: YOUR_KEY\" \\\n  \"https://api.mytravel.com/api/bookstore?origin=LHR&destination=JFK&date=2026-07-15\"\n```\n\n## Book a Flight\n\nOnce you have found a flight, book it:\n\n```bash\ncurl -X POST -H \"apikey: YOUR_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"{\\\"flight_id\\\": 42, \\\"passenger_name\\\": \\\"Jane Doe\\\", \\\"seats\\\": 2}\" \\\n  https://api.mytravel.com/api/bookings\n```\n\n## Error Handling\n\n| Status | Meaning |\n|---|---|\n| 200 | Success |\n| 401 | Missing or invalid API key |\n| 404 | Flight not found |\n| 429 | Rate limit exceeded - check Retry-After header |"
   }' | jq '{id, title, slug}'
 ```
 
@@ -434,16 +434,16 @@ Konnect Organization
 ├── API Products
 │   ├── Flights API
 │   │   ├── Version v1.0.0 (OpenAPI spec)
-│   │   ├── Implementation → flights-svc on control plane
+│   │   ├── Implementation → bookstore-service on control plane
 │   │   ├── Publication → portal (public, key-auth)
 │   │   └── Document: Quick Start
 │   ├── Hotels API
 │   │   ├── Version v1.0.0 (OpenAPI spec)
-│   │   ├── Implementation → hotels-svc
+│   │   ├── Implementation → inventory-service
 │   │   └── Publication → portal (public, key-auth)
 │   └── Cars API
 │       ├── Version v1.0.0 (OpenAPI spec)
-│       ├── Implementation → cars-svc
+│       ├── Implementation → payments-service
 │       └── Publication → portal (private, key-auth)
 │
 └── Application Auth Strategies

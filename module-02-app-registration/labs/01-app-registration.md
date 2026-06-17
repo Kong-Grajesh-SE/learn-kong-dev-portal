@@ -228,7 +228,7 @@ export API_KEY="your-key-from-portal"
 export PROXY_URL="http://localhost:8000"
 
 # Test the Flights API
-curl -s -H "apikey: $API_KEY" "$PROXY_URL/api/flights" | jq '.'
+curl -s -H "apikey: $API_KEY" "$PROXY_URL/api/bookstore" | jq '.'
 ```
 
 **Checkpoint.** The request returns flight data. Without the `apikey` header, you get a 401.

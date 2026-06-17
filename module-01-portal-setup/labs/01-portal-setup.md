@@ -10,7 +10,7 @@
 |---|---|
 | Konnect account | [cloud.konghq.com](https://cloud.konghq.com) (free tier includes Dev Portal) |
 | Konnect PAT | Account → Tokens → Generate Token |
-| Prior bootcamp services | `flights-svc`, `hotels-svc`, `cars-svc` running on your control plane |
+| Prior bootcamp services | `bookstore-service`, `inventory-service`, `payments-service` running on your control plane |
 | curl + jq | HTTP calls and JSON parsing |
 
 ```bash
@@ -174,7 +174,7 @@ servers:
     description: Production (via Kong Gateway)
 
 paths:
-  /api/flights:
+  /api/bookstore:
     get:
       summary: List available flights
       operationId: listFlights
@@ -206,7 +206,7 @@ paths:
         "429":
           $ref: "#/components/responses/RateLimited"
 
-  /api/flights/{id}:
+  /api/bookstore/{id}:
     get:
       summary: Get flight by ID
       operationId: getFlightById
@@ -494,19 +494,19 @@ Capture the service IDs for your travel services:
 ```bash
 export FLIGHTS_SVC_ID=$(curl -s -H "Authorization: Bearer $KONNECT_PAT" \
   "$KONNECT_API/v2/control-planes/$CP_ID/core-entities/services" | \
-  jq -r '.data[] | select(.name=="flights-svc") | .id')
+  jq -r '.data[] | select(.name=="bookstore-service") | .id')
 
 export HOTELS_SVC_ID=$(curl -s -H "Authorization: Bearer $KONNECT_PAT" \
   "$KONNECT_API/v2/control-planes/$CP_ID/core-entities/services" | \
-  jq -r '.data[] | select(.name=="hotels-svc") | .id')
+  jq -r '.data[] | select(.name=="inventory-service") | .id')
 
 export CARS_SVC_ID=$(curl -s -H "Authorization: Bearer $KONNECT_PAT" \
   "$KONNECT_API/v2/control-planes/$CP_ID/core-entities/services" | \
-  jq -r '.data[] | select(.name=="cars-svc") | .id')
+  jq -r '.data[] | select(.name=="payments-service") | .id')
 
-echo "flights-svc: $FLIGHTS_SVC_ID"
-echo "hotels-svc:  $HOTELS_SVC_ID"
-echo "cars-svc:    $CARS_SVC_ID"
+echo "bookstore-service: $FLIGHTS_SVC_ID"
+echo "inventory-service:  $HOTELS_SVC_ID"
+echo "payments-service:    $CARS_SVC_ID"
 ```
 
 ::: warning Service names may differ
@@ -516,7 +516,7 @@ If you used different names in the API Gateway bootcamp, adjust the `select(.nam
 ### 4c. Create implementations
 
 ```bash
-# Link Flights API → flights-svc
+# Link Flights API → bookstore-service
 curl -s -X POST "$KONNECT_API/v3/apis/$FLIGHTS_API_ID/implementations" \
   -H "Authorization: Bearer $KONNECT_PAT" \
   -H "Content-Type: application/json" \
@@ -530,7 +530,7 @@ curl -s -X POST "$KONNECT_API/v3/apis/$FLIGHTS_API_ID/implementations" \
     }
   }" | jq '{id, type}'
 
-# Link Hotels API → hotels-svc
+# Link Hotels API → inventory-service
 curl -s -X POST "$KONNECT_API/v3/apis/$HOTELS_API_ID/implementations" \
   -H "Authorization: Bearer $KONNECT_PAT" \
   -H "Content-Type: application/json" \
@@ -544,7 +544,7 @@ curl -s -X POST "$KONNECT_API/v3/apis/$HOTELS_API_ID/implementations" \
     }
   }" | jq '{id, type}'
 
-# Link Cars API → cars-svc
+# Link Cars API → payments-service
 curl -s -X POST "$KONNECT_API/v3/apis/$CARS_API_ID/implementations" \
   -H "Authorization: Bearer $KONNECT_PAT" \
   -H "Content-Type: application/json" \

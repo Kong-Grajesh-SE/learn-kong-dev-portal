@@ -25,9 +25,9 @@ Your Konnect control plane should have these services from the API Gateway bootc
 
 | Service | Route | Purpose |
 |---|---|---|
-| `flights-svc` | `/api/flights` | Flight search and booking |
-| `hotels-svc` | `/api/hotels` | Hotel search |
-| `cars-svc` | `/api/cars` | Car rental search |
+| `bookstore-service` | `/api/bookstore` | Flight search and booking |
+| `inventory-service` | `/api/hotels` | Hotel search |
+| `payments-service` | `/api/cars` | Car rental search |
 
 If you don't have these services, complete the [API Gateway Bootcamp](https://kong-grajesh-se.github.io/learn-kong-gateway/) first, or create placeholder services in your control plane.
 
