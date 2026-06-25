@@ -61,4 +61,4 @@ These labs use `us.api.konghq.com`. If your Konnect org is in the EU region, rep
 
 ---
 
-*Ready? Start with [Module 01 - Developer Portal →](/module-01-developer-portal/)*
+*Ready? Start with [Module 01 - Developer Portal →](/module-01-portal-setup/)*

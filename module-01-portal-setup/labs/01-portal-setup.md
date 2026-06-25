@@ -674,4 +674,4 @@ The flow: **API Product** → has **Versions** (with specs) → linked to **Gate
 
 ---
 
-*Next: [Lab 02 - App Registration & Auth Strategies -->](./02-app-registration)*
+*Next: [Lab 02 - App Registration & Auth Strategies -->](/module-02-app-registration/labs/01-app-registration)*

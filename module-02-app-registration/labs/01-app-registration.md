@@ -316,4 +316,4 @@ Developer signs up → (auto-approve or admin approves)
 
 ---
 
-*Next: [Lab 03 - Portal Customization & Teams -->](./03-portal-customization)*
+*Next: [Lab 03 - Portal Customization & Teams -->](/module-03-portal-customization/labs/01-portal-customization)*
